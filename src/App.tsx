@@ -1,28 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
+import {Routes, Route} from "react-router-dom";
+
 import './App.css';
+import {InputForm} from "./InputForm";
+import {PolicyPage} from "./policy";
+
+import {routesPaths} from "./routes";
+import {Navigation} from "./navigation";
+import {Rick} from "./Rick";
 
 function App() {
-  const handleShowAlert = () => {
-    alert("Hello React! Hello world! Nice to meet you!")
-  }
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <button onClick={handleShowAlert}>Show alert</button>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <div className="App">
+
+            <Navigation/>
+            <Routes>
+                <Route path='/' element={<InputForm defaultValue={'hello form'}/>}/>
+                <Route path='*' element={<div>404</div>}/>
+                <Route path={`/${routesPaths.about}`} element={<div>Pierwsze, cenne doświadczenia z React. Dzięki, Maćku!</div>}/>
+                <Route path='/policy' element={<PolicyPage/>}/>
+                <Route path='/form' element={<div>Aspiruję do bycia programistką :D</div>}/>
+                <Route path='/Rick' element={<Rick/>}/>
+            </Routes>
+        </div>
     </div>
   );
 }
