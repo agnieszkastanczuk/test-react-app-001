@@ -1,39 +1,28 @@
 import React from 'react';
-import {Routes, Route, Link} from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 
 import './App.css';
 import {InputForm} from "./InputForm";
 import {PolicyPage} from "./policy";
 
-export const routesPaths = {
-    about: 'about'
-}
+import {routesPaths} from "./routes";
+import {Navigation} from "./navigation";
+import {Rick} from "./Rick";
 
 function App() {
-  const handleShowAlert = () => {
-    alert("Hello React! Hello world! Nice to meet you!")
-  }
+  
   return (
     <div className="App">
         <div className="App">
-            <div className='App-header'>
-                <div>
-                    Witaj!
-                </div>
-                <div>
-                    <Link className='App-link' to={'/'}>Kim jesteś?</Link>
-                    <Link className='App-link' to={`/${routesPaths.about}`}>O co tu chodzi?</Link>
-                    <Link className='App-link' to={'/form'}>Kim jestem?</Link>
-                    <Link className='App-link' to={'/policy'}>Polityka</Link>
-                </div>
-            </div>
 
+            <Navigation/>
             <Routes>
                 <Route path='/' element={<InputForm defaultValue={'hello form'}/>}/>
                 <Route path='*' element={<div>404</div>}/>
                 <Route path={`/${routesPaths.about}`} element={<div>Pierwsze, cenne doświadczenia z React. Dzięki, Maćku!</div>}/>
                 <Route path='/policy' element={<PolicyPage/>}/>
                 <Route path='/form' element={<div>Aspiruję do bycia programistką :D</div>}/>
+                <Route path='/Rick' element={<Rick/>}/>
             </Routes>
         </div>
     </div>
